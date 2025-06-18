@@ -264,6 +264,22 @@ text-align: center;
     .timeline-item:nth-child(even)::after {
         left: 12px;
     }
+
+    /* Opcional: Reduz o espaçamento interno do card em telas pequenas */
+    .skill-item {
+        padding: 20px 15px;
+    }
+
+    /* Reduz o tamanho da imagem do ícone */
+    .skill-header img {
+        width: 50px;
+        height: 50px;
+    }
+
+    /* Reduz o tamanho da fonte do título */
+    .skill-header h4 {
+        font-size: 1.1em;
+    }
 }
 
 /* Telas maiores, onde a bolinha de progresso aparece */
