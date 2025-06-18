@@ -203,6 +203,46 @@ footer {
     margin-top: 0;
 }
 
+/* Estilos para a seção Sobre Mim com foto */
+.sobre-container {
+display: flex;
+align-items: center; /* Alinha verticalmente o texto e a foto */
+gap: 30px; /* Espaço entre o texto e a foto */
+}
+
+.sobre-texto {
+flex: 1; /* O texto ocupa o espaço restante */
+}
+
+.sobre-foto {
+flex-shrink: 0; /* Evita que a foto encolha demais */
+width: 150px; /* Ajuste a largura desejada */
+height: 150px; /* Ajuste a altura desejada (para manter a proporção se for quadrada) */
+border-radius: 50%; /* Cria o efeito de círculo (cantos arredondados máximos) */
+overflow: hidden; /* Garante que a imagem fique dentro do círculo */
+}
+
+.sobre-foto img {
+width: 100%;
+height: 100%;
+object-fit: cover; /* Preenche o círculo mantendo a proporção e cortando se necessário */
+}
+
+/* Para telas menores, empilhar o texto e a foto */
+@media screen and (max-width: 768px) {
+.sobre-container {
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
+
+.sobre-foto {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+}
+
 
 /* --- 4. REGRAS RESPONSIVAS (MEDIA QUERIES) --- */
 
