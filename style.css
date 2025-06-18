@@ -1,0 +1,234 @@
+/* ==========================================================================
+   CSS do Portfólio - Organizado
+   ========================================================================== */
+
+/* --- 1. ESTILOS GERAIS --- */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* --- 2. ESTRUTURA E LAYOUT --- */
+main {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+section {
+    background-color: #fff;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+    color: #777;
+}
+
+/* --- 3. COMPONENTES --- */
+
+/* 3.1. Timeline */
+.timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* A linha vertical central */
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background-color: #ddd;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+    /* Animação */
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.timeline-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    padding-left: 0;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+/* Círculo estático na linha do tempo */
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: white;
+    border: 3px solid #333;
+    top: 20px;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(odd)::after {
+    right: -8px;
+}
+
+.timeline-item:nth-child(even)::after {
+    left: -8px;
+}
+
+.timeline-content {
+    padding: 20px;
+    background-color: white;
+    border-radius: 6px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-date {
+    font-size: 0.9em;
+    font-style: italic;
+    color: #777;
+}
+
+
+
+/* --- 3.2. Habilidades (Skills) --- */
+
+/* Container em grade para os cards */
+.skills-container-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* O card de cada habilidade (Estilo escuro) */
+.skill-item {
+    background: #2c2c2c; /* Fundo escuro */
+    color: #f0f0f0;      /* Texto claro */
+    border-radius: 8px;
+    padding: 25px 20px;
+    cursor: pointer;
+    text-align: center;  /* Centraliza o conteúdo (imagem e título) */
+    transition: all 0.3s ease-in-out;
+}
+
+/* A MÁGICA: Ao passar o mouse no card... */
+.skill-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Estilo para a imagem do ícone */
+.skill-header img {
+    width: 100px;       /* Tamanho da imagem */
+    height: 100px;      /* Garante que seja quadrada, se necessário */
+    object-fit: contain; /* Garante que a imagem caiba sem distorcer */
+    margin-bottom: 15px; /* Espaço entre a imagem e o título */
+}
+
+.skill-header h4 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+/* Descrição que começa oculta */
+.skill-description {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    text-align: left; /* Alinha o texto da descrição à esquerda para melhor leitura */
+    transition: max-height 0.4s ease-out, opacity 0.3s ease-out, margin-top 0.4s ease-out;
+}
+
+/* Parágrafo dentro da descrição */
+.skill-description p {
+    margin: 0;
+    padding-top: 15px;
+    border-top: 1px solid #555; /* Cor da linha para o tema escuro */
+    font-size: 0.9em;
+    color: #ccc; /* Cor um pouco mais suave para a descrição */
+}
+
+/* ...a descrição se expande! */
+.skill-item:hover .skill-description {
+    max-height: 200px;
+    opacity: 1;
+    margin-top: 15px;
+}
+
+/* 3.3. Projetos */
+.projeto {
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
+
+.projeto h3 {
+    margin-top: 0;
+}
+
+
+/* --- 4. REGRAS RESPONSIVAS (MEDIA QUERIES) --- */
+
+/* Telas menores (celular) */
+@media screen and (max-width: 600px) {
+    .timeline::before {
+        left: 20px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even) {
+        width: 100%;
+        left: 0;
+        padding-left: 50px;
+        padding-right: 0;
+    }
+
+    .timeline-item::after,
+    .timeline-item:nth-child(even)::after {
+        left: 12px;
+    }
+}
+
+/* Telas maiores, onde a bolinha de progresso aparece */
+@media screen and (min-width: 601px) {
+    #timeline-progress-ball {
+        display: block;
+    }
+}
