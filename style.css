@@ -236,7 +236,7 @@ align-items: center;
 text-align: center;
 }
 
-.sobre-foto {
+.sobre-foto img{
     width: 100px;
     height: 100px;
     margin-bottom: 20px;
